@@ -6,6 +6,7 @@ using ECommerce.Application.Services;
 using ECommerce.Domain.Repositories;
 using ECommerce.Domain.Security;
 using ECommerce.Infrastructure;
+using ECommerce.Infrastructure.Middleware;
 using ECommerce.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.OpenApi.Models;
@@ -88,7 +89,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseMiddleware<JwtAuthenticationMiddleware>();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
