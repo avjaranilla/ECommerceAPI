@@ -41,7 +41,7 @@ dotnet restore
 - The API uses **SQLite**. Ensure the connection string is set in `appsettings.json`:
   ```json
   "ConnectionStrings": {
-    "DefaultConnection": "Data Source=order.db"
+    "DefaultConnection": "Data Source=ecommerce.db"
   }
   ```
   -DB has pre store values for users. admin and customer
@@ -75,7 +75,6 @@ A simple mock payment service updates the order status from **PENDING** to **PAI
 
 ## Next Steps
 - Improve error handling and validation.
-- Add logging mechanism
 - Add unit tests for services and controllers.
 - Proper API Documentation
 - Refactoring and Apply DRY
