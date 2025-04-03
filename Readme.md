@@ -80,6 +80,17 @@ A simple mock payment service updates the order status from **PENDING** to **PAI
 - Proper API Documentation
 - Refactoring and Apply DRY
 
+- Apologies for some features.. really rushed this one. ✌👏
+
 ---
+**UserCredentials:**
+Admin Role
+username: admin
+password: admin
+
+Customer Role
+username: customer
+password: customer
+
 **Author:** Allan Robert Jaranilla
 
