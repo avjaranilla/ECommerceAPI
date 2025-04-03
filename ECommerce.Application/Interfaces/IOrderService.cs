@@ -12,6 +12,7 @@ namespace ECommerce.Application.Interfaces
     {
         Task<OrderHeader> CreateOrderAsync(int cartId, string shippingAddress);
         Task<OrderResponseDTO> GetByOrderIdAsync(int orderId);
+        Task<bool> PayOrderAsync(int orderId);
 
     }
 }

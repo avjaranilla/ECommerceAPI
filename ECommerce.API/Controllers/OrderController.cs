@@ -49,5 +49,18 @@ namespace ECommerce.API.Controllers
             return Ok(orderHeader);
         }
 
+        [HttpPut("pay/{orderId}")]
+        public async Task<IActionResult> PayOrder(int orderId)
+        {
+            var result = await _orderService.PayOrderAsync(orderId);
+
+            if (!result)
+            {
+                return BadRequest("Payment failed or order not found.");
+            }
+
+            return Ok("Payment successful. Order status updated to PAID.");
+        }
+
     }
 }

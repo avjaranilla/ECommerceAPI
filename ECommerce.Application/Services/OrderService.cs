@@ -16,14 +16,15 @@ namespace ECommerce.Application.Services
         private readonly IOrderHeaderRepository _orderHeaderRepository;
         private readonly IOrderDetailsRepository _orderDetailsRepository;
         private readonly ICartItemRepository _cartItemRepository;
+        private readonly IPaymentService _paymentService;
 
-        public OrderService(IUserCartRepository cartRepository, IOrderHeaderRepository orderHeaderRepository,
-            IOrderDetailsRepository orderDetailsRepository, ICartItemRepository cartItemRepository)
+        public OrderService(IUserCartRepository cartRepository, IOrderHeaderRepository orderHeaderRepository, IOrderDetailsRepository orderDetailsRepository, ICartItemRepository cartItemRepository, IPaymentService paymentService)
         {
             _cartRepository = cartRepository;
             _orderHeaderRepository = orderHeaderRepository;
             _orderDetailsRepository = orderDetailsRepository;
             _cartItemRepository = cartItemRepository;
+            _paymentService = paymentService;
         }
 
         public async Task<OrderResponseDTO> GetByOrderIdAsync(int orderId)
@@ -102,6 +103,11 @@ namespace ECommerce.Application.Services
 
             // Step 7: Return the created OrderHeader
             return orderHeader;
+        }
+
+        public async Task<bool> PayOrderAsync(int orderId)
+        {
+            return await _paymentService.ProcessPaymentAsync(orderId);
         }
     }
 }
